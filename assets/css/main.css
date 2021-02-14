@@ -1,0 +1,226 @@
+:root{
+    --main-font-family: cursive;
+}
+body{
+    margin-top:20px;
+    font-family: var(--main-font-family);
+}
+
+#main-div{
+    margin-left:25%;
+    width:50vw;
+    border: 1px rgb(41, 40, 40) dashed;
+    overflow: hidden;
+    background-color: rgb(251, 253, 235);
+    
+}
+/* title of app */
+#title{
+    width:100%;
+    font-size: 1.2rem;
+    color:rgb(168, 14, 47);
+    text-align: center;
+    text-decoration: underline;
+}
+
+/* Adding task description and category and deadline */
+.add-description {
+    padding-bottom:10px;
+    width:100%;
+    border-top: 1px solid  rgb(165, 129, 9);
+    font-family: var(--main-font-family);
+   
+}
+/* Effects on hovering over description category due date */
+.add-description:hover, .category:hover, .indate:hover{
+    background-color:  rgb(245, 250, 214);
+}
+
+.add-description input{ 
+    border: none;
+    width:96%;
+    background-color: inherit;  
+    font-family: inherit; 
+}
+.add-description label, .add-description input, .category label, .category select{
+    margin-left:10px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:rgb(214, 214, 214);
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:rgb(214, 214, 214);
+  }
+  
+.date-cat{
+    width:100%;
+    height:55px;
+    display:flex;
+    border-top: 1px solid  rgb(165, 129, 9);
+    border-bottom: 1px  rgb(165, 129, 9)solid;
+}
+.category{
+    height:100%;
+    width:50%;
+    border-right: 1px solid  rgb(165, 129, 9) ;
+   
+}
+
+.category select, .indate input{
+    background-color: inherit;
+    border: none;
+    font-family: var(--main-font-family);
+}
+
+.indate input{
+    width:98%;
+}
+.category select{
+    width:95%;
+}
+.category select option{
+    color: rgb(48, 48, 48);
+}
+.indate{
+    padding-left:10px;
+    width:48%;
+}
+
+/* for add and delete button */
+.btn{
+        width:100%;
+    height: 40px;
+    padding:5px 10px;
+}
+.btn button{
+    font-family:var(--main-font-family);
+    width: 50%;
+    margin-left: 23%;
+    border: none;
+    height: 40px;
+    transition-duration: 0.8s;
+    color: white;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor:pointer;
+}
+/* for add button */
+#add{
+    background-color:  #555555;
+}
+#add:hover{
+    background-color: #313131;
+}
+#add::before{
+    font-family: FontAwesome;
+    content:"\f067 \2003";
+    font-weight: 500; 
+}
+/* for delete button */
+#delete{
+    background-color:#f44336;
+}
+#delete:hover{
+    background-color:#c01509;
+}
+#delete::before{
+    font-family: FontAwesome;
+    content:"\f1f8 \2003 ";
+    font-weight: 900; 
+}
+
+/* For task list  */
+ul{
+    list-style: none;
+    padding:0 15px;
+}
+ul .task:nth-child(2n){
+    background-color: rgb(245, 250, 214);
+}
+.task li{
+    min-height:50px;
+    padding: 5px 0;
+    border-top: 1px  rgb(165, 129, 9) solid;
+}
+/* Styling task name and deadline */
+.task-name{
+  width:500px;
+   margin-left:1%;
+}
+.task-name #name{
+    color:#252525;
+    font-size:1rem;
+}
+.task-name .deadline{
+    color:#535353;
+    font-size: small;
+}
+/* for styling task category */
+.task-category{
+    width:100px;   
+}
+.task-category div{
+    text-align: center;
+    margin-top:-7px;
+   color:white;
+   height:35px;
+}
+.task-category p{
+  padding-top: 5px;
+}
+
+/* for checkbox */
+.deletecheckbox{
+    margin-top:20px;
+}
+
+.deletecheckbox:checked +.task-name{
+    color:rgb(116, 113, 113);
+    text-decoration: line-through;
+}
+  
+*:focus {
+    outline: none;
+}
+
+/* Media Queries for different screen size */
+@media only screen and (max-width:450px){
+   #main-div{
+       margin-left: 3px;
+   }
+   .task-name{
+    width:200px;
+     
+  }
+  .category select{
+      margin-left:-1px;
+  }
+  
+ label{
+      font-size: 0.9rem;
+      
+  }
+}
+@media only screen and (max-width: 540px){
+    label{
+        font-size:0.9rem;
+    }
+    .task-name{
+        width:270px;
+         
+      }
+      .task-category{
+         font-size:0.9rem;
+          width:80px;
+      }
+}
+
+@media only screen and (max-width:768px){
+    #main-div{
+        margin-left: 8%;
+        width:80vw;
+    }  
+    
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        MY TO DO TASK APP!!
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+    <div id="main-div">
+        <div id="title">
+        <h2>TODO App</h2>
+    </div>    
+        <form action="/add-task" method="POST">
+      <!-- Adding Task Description  -->
+            <div class="add-description">
+               <label for="task">
+                DESCRIPTION
+            </label>
+            <br>
+                <input type="text" name="task" placeholder="What do you need to do?" required >
+                </div>
+               <!-- Adding task catecory and Deadline -->
+                <div class="date-cat">
+                 <div class="category"> 
+                     <label for="category">CATEGORY</label> <br>
+                <select name="category">
+                    <option value="">Choose a category</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="School">School</option>
+                    <option value="Cleaning">Cleaning</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div> 
+                <div class="indate">
+                    <label for="date">DUE DATE</label>
+                    <br>
+                <input type="date" name="date" min="<%= mindate %>" />
+                </div>
+                </div>
+                <div class="btn">
+                <button type="submit" id="add">Add Task</button>
+            </div>
+            </form>
+            
+<form action='/delete-task' method="POST">
+    <!-- Delete Button -->
+    <div class="btn">
+    <button type="submit" id="delete" >Delete</button>
+        </div>
+        <!-- For displaying list of tasks -->
+             <ul>
+
+                   
+            <% for (let i of task_list) { %> 
+              
+                <div class="task"> 
+                    
+                    <li>
+                        <div style="display: flex;">
+                        <input class="deletecheckbox" type="checkbox" name="checkbox"  value="<%= i.id %>">
+                       <div class="task-name"><span id="name"><%= i.task %> </span>
+                            <br>
+                        <% if(i.date){ %>
+                            <span class="deadline"><i class="fa fa-calendar" aria-hidden="true"></i><%= i.date.toDateString().slice(4,10)+","+ i.date.toDateString().slice(10,15) %>
+                            </span>
+                                <% } else{ %>  
+                           <span class="deadline"> No Deadline</span>
+                         <% } %>
+                            
+                        </div>
+                        <div class="task-category">
+                            <%if (i.category) { %>
+                                <%if (i.category=="Work") { %>
+                                    <div style="background-color: rgb(171, 29, 253);">
+                                    <p ><%= i.category %></p>
+                                    </div>
+                                <% } %>
+                                <%if (i.category=="School") { %>
+                                    <div style="background-color: rgb(240, 59, 134);">
+                                    <p><%= i.category %></p>
+                                        </div>
+                                    <% } %>
+                                <%if (i.category=="Cleaning") { %>
+                                    <div style="background-color: rgb(26, 79, 226);">
+                                    <p><%= i.category %></p>
+                                </div>
+                                    <% } %>
+                                <%if (i.category=="Personal") { %>
+                                    <div style="background-color: rgb(247, 41, 76);">
+                                    <p><%= i.category %></p>
+                                </div>
+                                    <% } %>
+                                <%if (i.category=="Other") { %>
+                                    <div style="background-color: rgb(17, 218, 117);">
+                                    <p><%= i.category %></p>
+                                </div>
+                                    <% } %>
+                               
+                            <% } %>
+                        </div>
+                        </div>        
+                       
+                    </li>
+                </div>
+             
+            <% } %>
+            
+        </ul>
+</form>
+    </div>
+    <!-- for input type date to work on safari -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+    <script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+    <script>
+      webshims.setOptions('waitReady', false);
+      webshims.setOptions('forms-ext', {type: 'date'});
+      webshims.polyfill('forms forms-ext');
+    </script>
+    
+</body>
+</html>
