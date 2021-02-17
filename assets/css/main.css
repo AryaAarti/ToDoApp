@@ -194,13 +194,16 @@ ul .task:nth-child(2n){
     width:200px;
      
   }
+  
   .category select{
       margin-left:-1px;
   }
   
  label{
-      font-size: 0.9rem;
-      
+      font-size: 0.9rem;  
+  }
+  .btn button{
+      font-size:1rem;
   }
 }
 @media only screen and (max-width: 540px){
@@ -223,4 +226,9 @@ ul .task:nth-child(2n){
         width:80vw;
     }  
     
+}
+@media only screen and (max-width:380px){
+    .task-category{
+        width:120px;
+    }
 }
